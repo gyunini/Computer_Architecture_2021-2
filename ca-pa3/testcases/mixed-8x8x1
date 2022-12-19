@@ -1,0 +1,48 @@
+1
+8
+8
+
+lw 0
+lw 4
+lw 8
+lw 12
+lw 16
+lw 20
+lw 24
+lw 28
+dump
+
+sw 12 1
+sw 24 2
+sw 4 4
+sw 24 8
+lw 4
+lw 20
+dump
+show
+
+lw 64
+lw 68
+lw 72
+lw 76
+lw 80
+lw 84
+lw 88
+lw 92
+dump
+show
+
+quit
+
+(X)[0x00000000] deadbeef badacafe 01234567 89abcdef
+(X)[0x00000010] 00112233 44556677 8899aabb ccddeeff
+(O)[0x00000020] 68656c6c 6f20776f 726c6421 89abcdef
+(X)[0x00000030] 50525456 585a5c5e 00000004 686a6c6e
+
+
+(O)[0x00000000] deadbeef 00000004 01234567 00000001
+(O)[0x00000010] 00112233 44556677 00000008 ccddeeff
+(O)[0x00000020] 68656c6c 6f20776f 726c6421 89abcdef
+(O)[0x00000030] 50525456 585a5c5e 60626466 686a6c6e
+
+

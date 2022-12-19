@@ -1,0 +1,6 @@
+addi sp sp 17
+addi sp sp -0x10
+andi t0 t1 0xaaaa
+ori s0 s2 -0x16
+lw s0 s1 4
+sw s4 s1 0x72

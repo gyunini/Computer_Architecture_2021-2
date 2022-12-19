@@ -1,0 +1,21 @@
+0x20040010 # 1000  addi a0 zr 16     # n = 16
+0x201F1054 # 1004  addi ra zr 0x1054 # last return address is where to hlt
+0x23BDFFF4 # 1008  addi sp sp -12    # push stack, 3 variables (ra, a0, tmp)
+0xAFBF0008 # 100c  sw   ra sp 8      # store return address
+0xAFA40004 # 1010  sw   a0 sp 4      # store argument
+0x28880002 # 1014  slti t0 a0 2      # if (n < 2)
+0x11000003 # 1018  beq  t0 zr 3      # goto else body
+0x00041020 # 101c  add  v0 zr a0     # result = n
+0x23BD000c # 1020  addi sp sp 12     # pop stack
+0x03E00008 # 1024  jr   ra           # return
+0x2084FFFF # 1028  addi a0 a0 -1     #
+0x0C000402 # 102c  jal  0x1008       # fib(n - 1)
+0xAFA20000 # 1030  sw   v0 sp 0      # store result of fib(n - 1)
+0x8FA40004 # 1034  lw   a0 sp 4      # restore argument
+0x2084FFFE # 1038  addi a0 a0 -2     #
+0x0C000402 # 103c  jal  0x1008       # fib(n - 2)
+0x8FA80000 # 1040  lw   t0 sp 0      # restore result of fib(n - 1)
+0x00481020 # 1044  add  v0 v0 t0     # result = fib(n - 1) + fib(n - 2)
+0x8FBF0008 # 1048  lw   ra sp 8      # restore return address
+0x23BD000C # 104c  addi sp sp 12     # pop stack
+0x03E00008 # 1050  jr   ra           # return
